@@ -1,6 +1,7 @@
 body {
   background-image: url(/images/background.webp);
   background-size: cover;
+  background-position: center;
 }
 
 .y-shaking {
@@ -40,14 +41,22 @@ body {
   flex-flow: column;
   height: 100%;
 
+  &.hide {
+    display: none;
+  }
+
   #player {
     font-family: fantasy;
     text-transform: uppercase;
-    color: #999999;
+    color: #fff;
 
     #score {
-      font-family: 'Nabla', cursive;
+      font-family: 'Orbitron', sans-serif;
       text-transform: uppercase;
+
+      span {
+        font-family: 'Nabla', cursive;
+      }
     }
   }
 }

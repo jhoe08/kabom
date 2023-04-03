@@ -1,3 +1,7 @@
+[GAMEPLAY]
+- A Battle-Royale, gains more points and when then game
+- In Short, pabilisan mgfinger-clicking game
+
 TASK
 - Create a box
 - Set user details
@@ -18,7 +22,10 @@ RULES
   - means whatever you clicked first can't be undone
   - the only means is after the game
 
-
 CODE
-- name
+- naming
   - [Object][Actions]
+
+[ISSUES]
+- can click other mine blocks -- nah it's a feature
+- any new player can change update the game bricks

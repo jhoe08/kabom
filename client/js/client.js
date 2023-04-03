@@ -50,9 +50,11 @@ const _client = {
       <label>${id}</label>
     </div>`
 
-      console.log('this.user',this.user)
+      let html2 = `<div id="userID">${id}</div>
+      <div id="score"><label>Points: </label><span>0</span></div>`
 
-      return users.innerHTML = html
+      console.log('this.user',this.user)
+      return (users.innerHTML = html, player.innerHTML = html2)
     })
 
 
@@ -71,9 +73,9 @@ const _client = {
 
       console.log('rewards', rewards)
 
-      return this.app.player.innerHTML = `
+      return player.innerHTML = `
         <div id="userID">${userID}</div>
-        <div id="score"><label>score: </label> ${sum}</div>`
+        <div id="score"><label>Points: </label><span>${sum}</span></div>`
     })
   },
   BoxActions() {
@@ -105,31 +107,25 @@ const _client = {
       let target = e.target
       data['boxID'] = target.getAttribute('data-id')
 
-      if(e.which === 3) { return false } 
       if(target.classList.contains('box') ) {
         target.classList.add('y-shaking')
-        if(!target.getAttribute('data-own')) {
-          this.socket.emit('box digging', data)
-        }
+        this.socket.emit('box digging', data)
       }
     }
     boxes.onmouseup = e => {
       let target = e.target
       data['boxID'] = target.getAttribute('data-id')
 
-      if(e.which === 3) { return false } 
-      if(target.classList.contains('box') || !target.getAttribute('data-own')) {
+      if(target.classList.contains('box')) {
         target.classList.remove('y-shaking')
         
-      }
-
-      
+      }      
     }
     boxes.onmouseout = e => {
       let target = e.target
       let boxID = target.getAttribute('data-id')
 
-      if(target.classList.contains('box') || !target.getAttribute('data-own')) {
+      if(target.classList.contains('box')) {
         target.classList.remove('y-shaking')
       }
     }
@@ -140,11 +136,13 @@ const _client = {
 
   },
   IntroActions() {
-    let { start, users, boxes } = this.app
+    let { start, users, boxes, id } = this.app
     let _socket = this.socket
 
     start.onclick = e => {
       start.closest('#intro').remove()
+      id.classList.remove('hide')
+
       _socket.emit('connectedUser')
 
       _socket.on('boxHTML', (html) => {

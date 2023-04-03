@@ -12,9 +12,9 @@ const createBox = () => {
     let html = '<div class="boxes flex column alignItemsCenter justifyContentCenter">'
       for (let index = 1; index <= boxes; index++) {
         if(index % size == 1) {
-          html += '<div class="row flex tile3">'
+          html += `<div class="row flex tile3">`
         }        
-        html += `<div data-id="${index}" class="box flip block${randomNumber(6)}"></div>`
+        html += `<div data-id="${index}" class="box flip block${randomNumber(3)}"></div>`
         if(index % size == 0) {
           html += '</div>'
         }
