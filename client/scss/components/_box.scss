@@ -1,0 +1,160 @@
+.box {
+  border: 1px solid;
+  padding: 40px;
+  position: relative;
+  margin: 5px; 
+
+  
+  &:nth-child(odd){
+
+  }
+
+
+  &.circle {
+    border-radius: 100%;
+  }
+
+  &.flip {
+    -webkit-perspective: 600px;
+	  -moz-perspective: 600px;
+    
+    .front, .back {
+      position: absolute;
+      top: 20px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    .front {
+      transform: rotateY(0deg);
+      transition:  all 1s;
+      background-color: red;
+    }
+    
+    .back {
+      transform: rotateY(-180deg);
+      transition:  all 1s;
+      background-color: black;
+    }
+  }  
+}
+
+.temp {
+  .box {
+      background: url(/images/tiles_3.png) 0 0;
+      background-position: 0 400px;
+      border: 0;
+      padding: 20px;
+      margin: 0;
+
+      &[data-reward] {
+        background: url(/images/VNqrSy.webp) 0 0;
+        background-size: 400px;
+      }
+      
+      &[data-reward="0"] {
+        background-position: -5px 95px;
+      }
+
+      &[data-reward="1"] {
+        background-position: -155px 345px;
+      }
+
+      &[data-reward="2"] {
+        background-position: -5px 293px;
+      }
+
+      &[data-reward="3"] {
+        background-position: -155px 145px;
+      }
+
+      &[data-reward="4"] {
+        background-position: -105px 145px;
+      }
+
+      &[data-reward="5"] {
+        background-position: -55px 145px;
+      }
+  }  
+}
+
+
+.tile2 {
+  .block0 {
+    background-position: 0 440px;
+  }
+
+  .block1 {
+    background-position: -40px 440px;
+  }
+
+  .block2 {
+    background-position: -80px 440px;
+  }
+
+  .block3 {
+    background-position: -160px 440px;
+  }
+
+  .block4 {
+    background-position: -200px 440px;
+  }
+
+  .block5 {
+    background-position: -240px 440px;
+  }
+}
+
+.tile3 {
+  .block0 {
+    background-position: 0 400px;
+  }
+
+  .block1 {
+    background-position: -40px 400px;
+  }
+
+  .block2 {
+    background-position: -80px 400px;
+  }
+
+  .block3 {
+    background-position: -160px 400px;
+  }
+
+  .block4 {
+    background-position: -200px 400px;
+  }
+
+  .block5 {
+    background-position: -240px 400px;
+  }
+}
+
+.tile4 {
+  .block0 {
+    background-position: 0 360px;
+  }
+
+  .block1 {
+    background-position: -40px 360px;
+  }
+
+  .block2 {
+    background-position: -80px 360px;
+  }
+
+  .block3 {
+    background-position: -160px 360px;
+  }
+
+  .block4 {
+    background-position: -200px 360px;
+  }
+
+  .block5 {
+    background-position: -240px 360px;
+  }
+}
+
+

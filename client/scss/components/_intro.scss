@@ -1,0 +1,53 @@
+body {
+  background-image: url(/images/background.webp);
+  background-size: cover;
+}
+
+.y-shaking {
+  animation: horizontal-shaking 0.3s infinite;
+}
+
+#intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+
+
+  #title {
+    h1 {
+      font-size: 6rem;
+      margin: 0;
+    }
+  }
+
+  #start {
+    font-family: 'Nabla', cursive;
+    text-transform: uppercase;
+  }
+
+  #users {
+    font-family: fantasy;
+    text-transform: uppercase;
+    color: #999999;
+  }
+}
+
+#app {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: column;
+  height: 100%;
+
+  #player {
+    font-family: fantasy;
+    text-transform: uppercase;
+    color: #999999;
+
+    #score {
+      font-family: 'Nabla', cursive;
+      text-transform: uppercase;
+    }
+  }
+}
