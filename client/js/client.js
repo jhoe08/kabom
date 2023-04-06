@@ -4,11 +4,25 @@ const _client = {
     intro: document.querySelector('#intro'),
     start: document.querySelector('#start'),
     id: document.querySelector('#app'),
-    users: document.querySelector('#users'),
-    player: document.querySelector('#player'),
+    users: document.querySelector('#users'),    
     boxes: document.querySelector('#boxes'),
     actions: document.querySelector('#actions'),
+    items: document.querySelector('#items'),
   }, 
+  player: {
+    id: document.querySelector('#player'),
+    userID: document.querySelector('#userID'),
+    score: document.querySelector('#score'),
+    rank: document.querySelector('#rank'),
+  },
+  sound: {
+    hitRock: document.querySelector('#hit-rock'),
+    powerUp1: document.querySelector('#power-up-1'),
+    powerUp2: document.querySelector('#power-up-2'),
+    powerUp3: document.querySelector('#power-up-3'),
+    powerUp4: document.querySelector('#power-up-4'),
+    smallBomb: document.querySelector('#small-bomb'),
+  },  
   message: {
     success: "Connected Successfully...",
     error: "Failed to connect the server..."
@@ -46,15 +60,17 @@ const _client = {
       this.user['color'] = color
 
       let html = `<div class="flex alignItemsCenter">
-      <div class="box circle" style="background-color: ${color}"></div>
-      <label>${id}</label>
-    </div>`
-
-      let html2 = `<div id="userID">${id}</div>
-      <div id="score"><label>Points: </label><span>0</span></div>`
+        <div class="box circle" style="background-color: ${color}"></div>
+        <div class="form__group ">
+          <input type="text" class="form__field" placeholder="Username" name="username" id="username">
+          <label for="username" class="form__label">${id}</label>
+        </div>
+      
+      </div>`
 
       console.log('this.user',this.user)
-      return (users.innerHTML = html, player.innerHTML = html2)
+      // return (users.innerHTML = html, player.innerHTML = html2)
+      return users.innerHTML = html
     })
 
 
@@ -65,27 +81,47 @@ const _client = {
 
     _socket.on('reward score', (data) => {
       let {userID, rewards} = data
+      let {items} = this.app
+      let {score} = this.player
       let sum = 0  
 
-      rewards.forEach(reward => {
+      let html = ''
+
+      rewards.forEach((reward) => {
         sum = sum + parseInt(reward)
+        html +=`<div class="box" data-reward="${reward}"></div>`
       });
 
-      console.log('rewards', rewards)
-
-      return player.innerHTML = `
-        <div id="userID">${userID}</div>
-        <div id="score"><label>Points: </label><span>${sum}</span></div>`
+      // console.log('rewards', rewards)
+      items.innerHTML = html
+      // return
+      score.querySelector('span').innerHTML = sum
     })
+
+    _socket.on('soundEffects', (data) => {
+
+    })
+
+    // document.body.innerHTML += this.SoundEffects()
   },
   BoxActions() {
-    let { boxes } = this.app
+    let { boxes, player } = this.app
+    let { userID } = this.player
+    let {hitRock, powerUp1, smallBomb} = this.sound
+
     let boxesOwn = 0
 
     let data = {
       boxID: "" ,
       userID: this.user['id'],
+      username: this.user['username'],
       color: this.user['color'],
+    }    
+
+    userID.innerHTML = data.username ? data.username : data.userID
+
+    boxes.oncontextmenu = e => {
+      return e.which !== 3 ?'': false
     }
 
     boxes.onclick = e => {
@@ -99,8 +135,22 @@ const _client = {
           boxesOwn++
           let active = target.classList.toggle('active')
           target.setAttribute('data-own', this.user['id'])
-          this.socket.emit('box click', data)
+          this.socket.emit('box click', data)          
         }
+        if(target.hasAttribute('data-reward')) {
+          if(target.dataset.reward != 0 && target.dataset.reward != '-5') {
+            powerUp1.currentTime = 0.5
+            powerUp1.play()
+          } else {
+            smallBomb.play()
+          }
+        } else {
+          hitRock.currentTime = 0.2
+          hitRock.play()
+        }
+
+        // smallBomb.play()
+        
       }
     }
     boxes.onmousedown = e => {
@@ -117,9 +167,9 @@ const _client = {
       data['boxID'] = target.getAttribute('data-id')
 
       if(target.classList.contains('box')) {
-        target.classList.remove('y-shaking')
-        
-      }      
+        target.classList.remove('y-shaking')        
+      }
+      this.resetSound()
     }
     boxes.onmouseout = e => {
       let target = e.target
@@ -128,22 +178,21 @@ const _client = {
       if(target.classList.contains('box')) {
         target.classList.remove('y-shaking')
       }
+      this.resetSound()
     }
-
-    document.body.oncontextmenu = e => {
-      // return e.which === 3 ? false : false
-    }
-
   },
   IntroActions() {
     let { start, users, boxes, id } = this.app
     let _socket = this.socket
 
     start.onclick = e => {
+      let username = users.querySelector('#username').value
+
       start.closest('#intro').remove()
       id.classList.remove('hide')
 
-      _socket.emit('connectedUser')
+      _socket.emit('connectedUser', username)
+      this.user['username'] = username
 
       _socket.on('boxHTML', (html) => {
         boxes.innerHTML = html
@@ -154,7 +203,28 @@ const _client = {
     document.body.oncontextmenu = e => {
       // return e.which === 3 ? false : false
     }
-  }
+  },
+  SoundEffects() {
+    let audio = ['hit-rock', 'power-up-1', 'power-up-2', 'power-up-3', 'power-up-4', 'small-bomb']
+    let html = `<div class="audios">`
+    audio.forEach(au => {
+      html += `<audio id="${au}"><source src="/sounds/${au}.mp3" type="audio/mpeg"></audio>`
+    });
+    html += `</div>`
+
+    return html
+  },
+  resetSound() {
+    let { hitRock, powerUp1, smallBomb } = this.sound
+
+    hitRock.pause()
+    powerUp1.pause()  
+    smallBomb.pause()
+
+    hitRock.currentTime = 0
+    powerUp1.currentTime = 0    
+    smallBomb.currentTime = 0
+  },
 }
 
 export default {..._client}

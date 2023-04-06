@@ -1,5 +1,5 @@
 body {
-  background-image: url(/images/background.webp);
+  background-image: url(/images/background/00.webp);
   background-size: cover;
   background-position: center;
 }
@@ -29,7 +29,7 @@ body {
   }
 
   #users {
-    font-family: fantasy;
+    font-family: 'Press Start 2P', cursive;
     text-transform: uppercase;
     color: #999999;
   }
@@ -37,26 +37,85 @@ body {
 
 #app {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-flow: column;
   height: 100%;
+  max-width: 500px;
+  margin: auto;  
 
   &.hide {
     display: none;
   }
 
   #player {
-    font-family: fantasy;
+    font-family: 'Press Start 2P', cursive;
     text-transform: uppercase;
     color: #fff;
 
-    #score {
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
+    #userID {
+      font-size: 14px;
+    }
 
-      span {
-        font-family: 'Nabla', cursive;
-      }
+    #score {
+      // font-family: 'Press Start 2P', cursive;
+      text-transform: uppercase;      
     }
   }
 }
+
+.form__group {
+  position: relative;
+  padding: 15px 0;
+  margin: 10px auto;
+  
+  .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #ffffff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+  
+    &::placeholder {
+      color: transparent;
+    }
+  
+    &:placeholder-shown ~ .form__label {
+      font-size: 1.3rem;
+      cursor: text;
+      top: 20px;
+    }
+    
+    &:focus {
+      ~ .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: .7rem;
+        color: #ffffff;
+        font-weight:700;    
+      }
+      padding-bottom: 6px;  
+      font-weight: 700;
+      border-width: 3px;
+      border-image-slice: 1;
+    }
+  }
+
+  .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #ffffff;
+  }
+}
+
+
+

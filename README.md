@@ -1,6 +1,7 @@
 [GAMEPLAY]
-- A Battle-Royale, gains more points and when then game
+- A Battle-Royale, gains more points
 - In Short, pabilisan mgfinger-clicking game
+- Bomberman, type?
 
 TASK
 - Create a box
@@ -12,9 +13,10 @@ TASK
   - limit is set to 1
 - Boxes number is based on 1:1 ration
   - hidden boxes
-    - 1 wealth
+    - 4 wealth
     - 1 bomb
--    
+- Sounds attached
+- Create Username
 
 
 RULES

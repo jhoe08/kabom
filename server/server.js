@@ -25,7 +25,7 @@ let {generateBox, generateBoxHTML, generateBoxData, generateRandomColors} = crea
 let userData = {}
 
 io.on('connection', async (socket) => {
-  let size = 8
+  let size = 10
   let socketID = socket.id
   let color = generateRandomColors()
   let boxData = generateBoxData(size)
@@ -38,12 +38,12 @@ io.on('connection', async (socket) => {
   ////////// USERS //////////
   io.to(socketID).emit('dataToUser', {'id': socketID, 'color': color})
 
-  socket.on('connectedUser', () => {
-    userData[socketID] = {'color':color}
+  socket.on('connectedUser', username => {
+    userData[socketID] = {'color':color, username}
     
     countUser = Object.keys(userData).length
     // size = countUser < 4 ? 2 : countUser < 9 ? 3 : countUser < 15 ? 4 : countUser < 25 ? 5 : undefined
-
+    console.log(userData)
     io.emit('boxHTML', generateBoxHTML(size))
   })
   /////// endof USERS /////// 
@@ -61,10 +61,12 @@ io.on('connection', async (socket) => {
   socket.on('box digging', (data) => {
     let {boxID, userID, color} = data
 
-    console.log(data)
+    // console.log(data)
 
     let count = boxData[boxID]['breaks']
     let reward = boxData[boxID]['reward']
+    
+    // console.log('reward', reward)
     
     if(boxData[boxID]['collapse']) {
       digging = 0
@@ -74,7 +76,7 @@ io.on('connection', async (socket) => {
 
     if(count == digging) {
       digging = 0      
-      console.log('found item!', reward)
+      // console.log('found item!', reward)
       boxData[boxID]['collapse'] = true 
       rewards.push(reward)
 

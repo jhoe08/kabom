@@ -31,7 +31,7 @@ const createBox = () => {
     for (let index = 1; index <= total; index++) {
       boxData[index] = {
         'breaks' : randomNumber(20), 
-        'reward' : randomNumber(6),
+        'reward' : (randomNumber(6) == 0) ? '-5' : randomNumber(6),
         'collapse': false,
       }
     }

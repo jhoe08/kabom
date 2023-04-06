@@ -1,5 +1,5 @@
 body {
-  background-image: url(/images/background.webp);
+  background-image: url(/images/background/00.webp);
   background-size: cover;
   background-position: center; }
 
@@ -19,32 +19,76 @@ body {
     font-family: 'Nabla', cursive;
     text-transform: uppercase; }
   #intro #users {
-    font-family: fantasy;
+    font-family: 'Press Start 2P', cursive;
     text-transform: uppercase;
     color: #999999; }
 
 #app {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-flow: column;
-  height: 100%; }
+  height: 100%;
+  max-width: 500px;
+  margin: auto; }
   #app.hide {
     display: none; }
   #app #player {
-    font-family: fantasy;
+    font-family: 'Press Start 2P', cursive;
     text-transform: uppercase;
     color: #fff; }
+    #app #player #userID {
+      font-size: 14px; }
     #app #player #score {
-      font-family: 'Orbitron', sans-serif;
       text-transform: uppercase; }
-      #app #player #score span {
-        font-family: 'Nabla', cursive; }
+
+.form__group {
+  position: relative;
+  padding: 15px 0;
+  margin: 10px auto; }
+  .form__group .form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #ffffff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s; }
+    .form__group .form__field::placeholder {
+      color: transparent; }
+    .form__group .form__field:placeholder-shown ~ .form__label {
+      font-size: 1.3rem;
+      cursor: text;
+      top: 20px; }
+    .form__group .form__field:focus {
+      padding-bottom: 6px;
+      font-weight: 700;
+      border-width: 3px;
+      border-image-slice: 1; }
+      .form__group .form__field:focus ~ .form__label {
+        position: absolute;
+        top: 0;
+        display: block;
+        transition: 0.2s;
+        font-size: .7rem;
+        color: #ffffff;
+        font-weight: 700; }
+  .form__group .form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: #ffffff; }
 
 .box {
-  border: 1px solid;
   padding: 40px;
   position: relative;
   margin: 5px; }
+  .box:not(.circle) {
+    border: 1px dashed #b30404; }
   .box.circle {
     border-radius: 100%; }
   .box.flip {
@@ -87,6 +131,28 @@ body {
   .temp .box[data-reward="5"] {
     background-position: -55px 145px; }
 
+.temp1 .box {
+  background: url(/images/tiles_3.png) 0 0;
+  background-size: 655px;
+  padding: 30px;
+  margin: 2px; }
+  .temp1 .box[data-reward] {
+    background: url(/images/VNqrSy.webp) 0 0;
+    background-size: 600px; }
+  .temp1 .box[data-reward="0"], .temp1 .box[data-reward="-5"] {
+    background-position: -10px 140px; }
+  .temp1 .box[data-reward="1"] {
+    background-position: -235px -85px; }
+  .temp1 .box[data-reward="2"] {
+    background-position: -10px 440px; }
+  .temp1 .box[data-reward="3"] {
+    background-position: -232px 218px; }
+  .temp1 .box[data-reward="4"] {
+    background-position: -158px 218px; }
+  .temp1 .box[data-reward="5"] {
+    background-position: -82px 218px; }
+
+/** temp **/
 .tile0 .block0 {
   background-position: 0 0; }
 .tile0 .block1 {
@@ -139,9 +205,18 @@ body {
 .tile4 .block5 {
   background-position: -240px 360px; }
 
-* {
-  font-size: 1.4rem;
-  font-family: inherit; }
+/** temp 1 **/
+.tile3 .block0 {
+  background-position: 0px 180px; }
+.tile3 .block1 {
+  background-position: -60px 180px; }
+.tile3 .block2 {
+  background-position: -120px 180px; }
+.tile3 .block3 {
+  background-position: -120px 180px; }
+
+#items {
+  display: flex; }
 
 h1, h2, h3 {
   font-family: sans-serif; }
@@ -165,6 +240,9 @@ a {
 
 .justifyContentCenter {
   justify-content: center; }
+
+.justifyContentSpaceBetween {
+  justify-content: space-between; }
 
 @keyframes horizontal-shaking {
   0% {
@@ -220,8 +298,5 @@ a {
   src: url(/fonts/Nabla/Nabla-Regular.woff); }
 .fontNabla {
   font-family: 'Nabla', cursive; }
-
-.fontOrbitron {
-  font-family: 'Orbitron', sans-serif; }
 
 /*# sourceMappingURL=style.css.map */

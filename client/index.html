@@ -3,14 +3,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>KA-BOMB!</title>
   <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="/images/favicon.ico">
   <link rel="stylesheet" href="/scss/style.css" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 
 </head>
@@ -22,10 +22,28 @@
     <div id="users"></div>
     <div id="start" class="button">start</div>
   </div>
-  <div id="app" class="hide">    
-    <div id="boxes" class="temp"></div>
-    <div id="player" class="flex column alignItemsCenter justifyContentCenter"></div>
+  <div id="app" class="hide">
+    <div id="player" class="flex justifyContentSpaceBetween">
+      <div class="left">
+        <div id="userID"></div>
+        <div id="score">
+          <label>Points: </label><span>0</span>
+        </div>
+      </div>
+      <div class="right">
+        <div id="rank" class="flex column">
+          <label>Rank </label><span>1 of 2</span>
+        </div>
+      </div>
+    </div>
+    <div id="boxes" class="temp1"></div>
+    <div id="items" class="temp1"></div>
   </div>
+
+  <div class="audios">
+    <audio id="hit-rock"><source src="/sounds/minecraft-cracking.mp3" type="audio/mpeg"></audio>
+    <audio id="power-up-1"><source src="/sounds/power-up-1.mp3" type="audio/mpeg"></audio>
+    <audio id="small-bomb"><source src="/sounds/small-bomb.mp3" type="audio/mpeg"></audio></div>
 
   <script src="socket.io/socket.io.js"></script>
   <script type="module" src="js/index.js"></script>

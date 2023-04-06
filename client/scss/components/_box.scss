@@ -1,5 +1,8 @@
 .box {
-  border: 1px solid;
+  &:not(.circle) {
+    border: 1px dashed #b30404;
+  }
+
   padding: 40px;
   position: relative;
   margin: 5px; 
@@ -41,43 +44,83 @@
 
 .temp {
   .box {
-      background: url(/images/tiles_3.png) 0 0;
-      background-position: 0 400px;
-      border: 0;
-      padding: 20px;
-      margin: 0;
+    background: url(/images/tiles_3.png) 0 0;
+    background-position: 0 400px;
+    border: 0;
+    padding: 20px;
+    margin: 0;
 
-      &[data-reward] {
-        background: url(/images/VNqrSy.webp) 0 0;
-        background-size: 400px;
-      }
-      
-      &[data-reward="0"] {
-        background-position: -5px 95px;
-      }
+    &[data-reward] {
+      background: url(/images/VNqrSy.webp) 0 0;
+      background-size: 400px;
+    }
+    
+    &[data-reward="0"] {
+      background-position: -5px 95px;
+    }
 
-      &[data-reward="1"] {
-        background-position: -155px 345px;
-      }
+    &[data-reward="1"] {
+      background-position: -155px 345px;
+    }
 
-      &[data-reward="2"] {
-        background-position: -5px 293px;
-      }
+    &[data-reward="2"] {
+      background-position: -5px 293px;
+    }
 
-      &[data-reward="3"] {
-        background-position: -155px 145px;
-      }
+    &[data-reward="3"] {
+      background-position: -155px 145px;
+    }
 
-      &[data-reward="4"] {
-        background-position: -105px 145px;
-      }
+    &[data-reward="4"] {
+      background-position: -105px 145px;
+    }
 
-      &[data-reward="5"] {
-        background-position: -55px 145px;
-      }
+    &[data-reward="5"] {
+      background-position: -55px 145px;
+    }
   }  
 }
 
+.temp1 {
+  .box {
+    background: url(/images/tiles_3.png) 0 0;
+    background-size: 655px;
+    padding: 30px;
+    margin: 2px;
+
+    &[data-reward] {
+      background: url(/images/VNqrSy.webp) 0 0;
+      background-size: 600px;
+    }
+    
+    &[data-reward="0"],
+    &[data-reward="-5"] {
+      background-position: -10px 140px;
+    }
+
+    &[data-reward="1"] {
+      background-position: -235px -85px;
+    }
+
+    &[data-reward="2"] {
+      background-position: -10px 440px;
+    }
+
+    &[data-reward="3"] {
+      background-position: -232px 218px;
+    }
+
+    &[data-reward="4"] {
+      background-position: -158px 218px;
+    }
+
+    &[data-reward="5"] {
+      background-position: -82px 218px;
+    }
+  }  
+}
+
+/** temp **/
 .tile0 {
   .block0 {
     background-position: 0 0;
@@ -182,4 +225,29 @@
   }
 }
 
+/** temp 1 **/
+.tile3 {
+  .block0 {
+    background-position: 0px 180px;
+  }
 
+  .block1 {
+    background-position: -60px 180px;
+  }
+
+  .block2 {
+    background-position: -120px 180px;
+  }
+
+  .block3 {
+    background-position: -120px 180px;
+  }
+}
+
+#items {
+  display: flex;
+  
+  .box {
+
+  }
+}
