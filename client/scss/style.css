@@ -28,17 +28,17 @@ body {
   justify-content: space-around;
   flex-flow: column;
   height: 100%;
-  max-width: 500px;
+  max-width: max-content;
   margin: auto; }
   #app.hide {
     display: none; }
-  #app #player {
+  #app #players {
     font-family: 'Press Start 2P', cursive;
     text-transform: uppercase;
     color: #fff; }
-    #app #player #userID {
+    #app #players #userID {
       font-size: 14px; }
-    #app #player #score {
+    #app #players #score {
       text-transform: uppercase; }
 
 .form__group {
@@ -217,6 +217,11 @@ body {
 
 #items {
   display: flex; }
+  #items .box span {
+    position: absolute;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    bottom: -5px; }
 
 h1, h2, h3 {
   font-family: sans-serif; }

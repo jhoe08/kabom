@@ -40,14 +40,14 @@ body {
   justify-content: space-around;
   flex-flow: column;
   height: 100%;
-  max-width: 500px;
+  max-width: max-content;
   margin: auto;  
 
   &.hide {
     display: none;
   }
 
-  #player {
+  #players {
     font-family: 'Press Start 2P', cursive;
     text-transform: uppercase;
     color: #fff;

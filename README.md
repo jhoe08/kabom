@@ -17,7 +17,9 @@ TASK
     - 1 bomb
 - Sounds attached
 - Create Username
-
+- Stack to the user data
+- List and count of objects
+- [next] rankigns
 
 RULES
 - Touchmove 

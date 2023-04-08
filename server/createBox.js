@@ -14,7 +14,7 @@ const createBox = () => {
         if(index % size == 1) {
           html += `<div class="row flex tile3">`
         }        
-        html += `<div data-id="${index}" class="box flip block${randomNumber(3)}"></div>`
+        html += `<div data-id="${index}" class="box block${randomNumber(3)}"></div>`
         if(index % size == 0) {
           html += '</div>'
         }
@@ -29,9 +29,10 @@ const createBox = () => {
     const total = size * size
 
     for (let index = 1; index <= total; index++) {
+      let reward = randomNumber(6)
       boxData[index] = {
         'breaks' : randomNumber(20), 
-        'reward' : (randomNumber(6) == 0) ? '-5' : randomNumber(6),
+        'reward' : (reward === 0) ? '-5' : reward,
         'collapse': false,
       }
     }

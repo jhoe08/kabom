@@ -39,12 +39,14 @@ io.on('connection', async (socket) => {
   io.to(socketID).emit('dataToUser', {'id': socketID, 'color': color})
 
   socket.on('connectedUser', username => {
-    userData[socketID] = {'color':color, username}
+    let details = {'color':color, username}
+    userData[socketID] = {...details}
     
     countUser = Object.keys(userData).length
     // size = countUser < 4 ? 2 : countUser < 9 ? 3 : countUser < 15 ? 4 : countUser < 25 ? 5 : undefined
-    console.log(userData)
+    // console.log(userData)
     io.emit('boxHTML', generateBoxHTML(size))
+    io.emit('players', countUser)
   })
   /////// endof USERS /////// 
 
@@ -52,40 +54,34 @@ io.on('connection', async (socket) => {
     let {boxID, userID, color} = data
     _box.push(boxID)
 
-    userData[userID] = {'boxes': _box}
+    userData[userID] = {...userData[userID],'boxes': _box}
     io.emit('box clicked', {boxID, userID, color})
 
-    // console.log(data)
+    // console.log(userData)
   })
 
   socket.on('box digging', (data) => {
     let {boxID, userID, color} = data
 
-    // console.log(data)
-
     let count = boxData[boxID]['breaks']
     let reward = boxData[boxID]['reward']
     
-    // console.log('reward', reward)
-    
     if(boxData[boxID]['collapse']) {
       digging = 0
-      // console.log('collapsed...')
       return false
     }
 
     if(count == digging) {
       digging = 0      
-      // console.log('found item!', reward)
       boxData[boxID]['collapse'] = true 
       rewards.push(reward)
 
       io.emit('reward show', [boxID, reward])
       io.to(userID).emit('reward score', {userID, rewards})
 
-      // console.log('item found...')
+      userData[userID] = {...userData[userID],'rewards': rewards}
+      console.log('item found...',userData)
     }
-    // console.log(`digging... ${count} - ${digging}`)
     digging += 1
   })
   /////// DISCONNECT ///////

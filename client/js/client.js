@@ -9,11 +9,11 @@ const _client = {
     actions: document.querySelector('#actions'),
     items: document.querySelector('#items'),
   }, 
-  player: {
-    id: document.querySelector('#player'),
+  players: {
+    id: document.querySelector('#players'),
     userID: document.querySelector('#userID'),
     score: document.querySelector('#score'),
-    rank: document.querySelector('#rank'),
+    ranks: document.querySelector('#ranks'),
   },
   sound: {
     hitRock: document.querySelector('#hit-rock'),
@@ -34,6 +34,7 @@ const _client = {
     this.IntroActions()
 
     let { users, boxes, actions } = this.app
+    let { ranks } = this.players
     let _socket = this.socket
       
 
@@ -73,7 +74,6 @@ const _client = {
       return users.innerHTML = html
     })
 
-
     _socket.on('reward show', (data) => {
       let [id, reward] = data
       document.querySelector(`.box[data-id="${id}"]`).setAttribute('data-reward', reward)
@@ -82,31 +82,41 @@ const _client = {
     _socket.on('reward score', (data) => {
       let {userID, rewards} = data
       let {items} = this.app
-      let {score} = this.player
+      let {score} = this.players
       let sum = 0  
 
       let html = ''
 
-      rewards.forEach((reward) => {
-        sum = sum + parseInt(reward)
-        html +=`<div class="box" data-reward="${reward}"></div>`
-      });
+      let uniqs = rewards.reduce((acc, val) => {
+        acc[val] = acc[val] === undefined ? 1 : acc[val] += 1;
+        return acc;
+      }, {});
 
-      // console.log('rewards', rewards)
+      console.log(uniqs)
+
+      for (var key in uniqs) {
+        if (uniqs.hasOwnProperty(key)) {
+            sum = sum + parseInt(uniqs[key])
+            html +=`<div class="box" data-reward="${key}"><span>x${uniqs[key]}</span></div>`
+        }
+      }
+
       items.innerHTML = html
-      // return
       score.querySelector('span').innerHTML = sum
     })
 
     _socket.on('soundEffects', (data) => {
+    })
 
+    _socket.on('players', (data) => {
+      ranks.querySelector('span').innerHTML = `${0} of ${data}`
     })
 
     // document.body.innerHTML += this.SoundEffects()
   },
   BoxActions() {
-    let { boxes, player } = this.app
-    let { userID } = this.player
+    let { boxes } = this.app
+    let { userID } = this.players
     let {hitRock, powerUp1, smallBomb} = this.sound
 
     let boxesOwn = 0
