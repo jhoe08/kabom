@@ -76,7 +76,7 @@ const _client = {
 
     _socket.on('reward show', (data) => {
       let [id, reward] = data
-      document.querySelector(`.box[data-id="${id}"]`).setAttribute('data-reward', reward)
+      document.querySelector(`.box[data-id="${id}"]`).setAttribute('data-rewards', reward)
     })
 
     _socket.on('reward score', (data) => {
@@ -97,7 +97,7 @@ const _client = {
       for (var key in uniqs) {
         if (uniqs.hasOwnProperty(key)) {
             sum = sum + parseInt(uniqs[key])
-            html +=`<div class="box" data-reward="${key}"><span>x${uniqs[key]}</span></div>`
+            html +=`<div class="box" data-rewards="${key}"><span>x${uniqs[key]}</span></div>`
         }
       }
 

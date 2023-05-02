@@ -55,27 +55,27 @@
       background-size: 400px;
     }
     
-    &[data-reward="0"] {
+    &[data-rewards="0"] {
       background-position: -5px 95px;
     }
 
-    &[data-reward="1"] {
+    &[data-rewards="1"] {
       background-position: -155px 345px;
     }
 
-    &[data-reward="2"] {
+    &[data-rewards="2"] {
       background-position: -5px 293px;
     }
 
-    &[data-reward="3"] {
+    &[data-rewards="3"] {
       background-position: -155px 145px;
     }
 
-    &[data-reward="4"] {
+    &[data-rewards="4"] {
       background-position: -105px 145px;
     }
 
-    &[data-reward="5"] {
+    &[data-rewards="5"] {
       background-position: -55px 145px;
     }
   }  
@@ -88,33 +88,33 @@
     padding: 30px;
     margin: 2px;
 
-    &[data-reward] {
+    &[data-rewards] {
       background: url(/images/VNqrSy.webp) 0 0;
       background-size: 600px;
     }
     
-    &[data-reward="0"],
-    &[data-reward="-5"] {
+    &[data-rewards="0"],
+    &[data-rewards="-5"] {
       background-position: -10px 140px;
     }
 
-    &[data-reward="1"] {
+    &[data-rewards="1"] {
       background-position: -235px -85px;
     }
 
-    &[data-reward="2"] {
+    &[data-rewards="2"] {
       background-position: -10px 440px;
     }
 
-    &[data-reward="3"] {
+    &[data-rewards="3"] {
       background-position: -232px 218px;
     }
 
-    &[data-reward="4"] {
+    &[data-rewards="4"] {
       background-position: -158px 218px;
     }
 
-    &[data-reward="5"] {
+    &[data-rewards="5"] {
       background-position: -82px 218px;
     }
   }  

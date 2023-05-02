@@ -118,17 +118,17 @@ body {
   .temp .box[data-reward] {
     background: url(/images/VNqrSy.webp) 0 0;
     background-size: 400px; }
-  .temp .box[data-reward="0"] {
+  .temp .box[data-rewards="0"] {
     background-position: -5px 95px; }
-  .temp .box[data-reward="1"] {
+  .temp .box[data-rewards="1"] {
     background-position: -155px 345px; }
-  .temp .box[data-reward="2"] {
+  .temp .box[data-rewards="2"] {
     background-position: -5px 293px; }
-  .temp .box[data-reward="3"] {
+  .temp .box[data-rewards="3"] {
     background-position: -155px 145px; }
-  .temp .box[data-reward="4"] {
+  .temp .box[data-rewards="4"] {
     background-position: -105px 145px; }
-  .temp .box[data-reward="5"] {
+  .temp .box[data-rewards="5"] {
     background-position: -55px 145px; }
 
 .temp1 .box {
@@ -136,20 +136,20 @@ body {
   background-size: 655px;
   padding: 30px;
   margin: 2px; }
-  .temp1 .box[data-reward] {
+  .temp1 .box[data-rewards] {
     background: url(/images/VNqrSy.webp) 0 0;
     background-size: 600px; }
-  .temp1 .box[data-reward="0"], .temp1 .box[data-reward="-5"] {
+  .temp1 .box[data-rewards="0"], .temp1 .box[data-rewards="-5"] {
     background-position: -10px 140px; }
-  .temp1 .box[data-reward="1"] {
+  .temp1 .box[data-rewards="1"] {
     background-position: -235px -85px; }
-  .temp1 .box[data-reward="2"] {
+  .temp1 .box[data-rewards="2"] {
     background-position: -10px 440px; }
-  .temp1 .box[data-reward="3"] {
+  .temp1 .box[data-rewards="3"] {
     background-position: -232px 218px; }
-  .temp1 .box[data-reward="4"] {
+  .temp1 .box[data-rewards="4"] {
     background-position: -158px 218px; }
-  .temp1 .box[data-reward="5"] {
+  .temp1 .box[data-rewards="5"] {
     background-position: -82px 218px; }
 
 /** temp **/
