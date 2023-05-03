@@ -92,11 +92,9 @@ const _client = {
         return acc;
       }, {});
 
-      console.log(uniqs)
-
       for (var key in uniqs) {
         if (uniqs.hasOwnProperty(key)) {
-            sum = sum + parseInt(uniqs[key])
+            sum = sum + parseInt(key)
             html +=`<div class="box" data-rewards="${key}"><span>x${uniqs[key]}</span></div>`
         }
       }
@@ -117,7 +115,7 @@ const _client = {
   BoxActions() {
     let { boxes } = this.app
     let { userID } = this.players
-    let {hitRock, powerUp1, smallBomb} = this.sound
+    let { hitRock, powerUp1, smallBomb } = this.sound
 
     let boxesOwn = 0
 
@@ -147,7 +145,7 @@ const _client = {
           target.setAttribute('data-own', this.user['id'])
           this.socket.emit('box click', data)          
         }
-        if(target.hasAttribute('data-reward')) {
+        if(target.hasAttribute('data-rewards')) {
           if(target.dataset.reward != 0 && target.dataset.reward != '-5') {
             powerUp1.currentTime = 0.5
             powerUp1.play()
