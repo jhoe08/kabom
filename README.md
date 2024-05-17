@@ -1,3 +1,7 @@
+[HOW TO RUN]
+  npm init
+  npm install
+  npm run dev
 [GAMEPLAY]
 - A Battle-Royale, gains more points
 - In Short, pabilisan mgfinger-clicking game
@@ -19,7 +23,7 @@ TASK
 - Create Username
 - Stack to the user data
 - List and count of objects
-- [next] rankigns
+- [next] rankings
 
 RULES
 - Touchmove 
