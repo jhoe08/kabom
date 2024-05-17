@@ -1,7 +1,9 @@
 [HOW TO RUN]
-  npm init
-  npm install
-  npm run dev
+- npm init
+- npm install
+- npm run dev
+
+
 [GAMEPLAY]
 - A Battle-Royale, gains more points
 - In Short, pabilisan mgfinger-clicking game
