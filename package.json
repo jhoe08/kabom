@@ -2,13 +2,13 @@
   "name": "luckyplace",
   "version": "1.0.0",
   "description": "A tiny box game",
-  "main": "server/server.js",
+  "main": "app.js",
   "scripts": {
-    "dev": "nodemon server/server.js",
-    "start": "node server/server.js",
+    "dev": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "netDev": "./node_modules/.bin/netlify-lambda serve server",
-    "netBuild": "./node_modules/.bin/netlify-lambda build server"
+    "netDev": "netlify-lambda serve server",
+    "netBuild": "netlify-lambda build server"
   },
   "keywords": [
     "Multiplayer",
@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jhoe08/luckyplace.git"
+    "url": "git+https://github.com/jhoe08/luckyplace.git"
   },
   "author": "Just Joe <red.mrjhon8@gmail.com>",
   "license": "ISC",
@@ -27,5 +27,9 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/jhoe08/luckyplace/issues"
+  },
+  "homepage": "https://github.com/jhoe08/luckyplace#readme"
 }
